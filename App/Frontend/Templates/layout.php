@@ -7,7 +7,7 @@
     
     <meta charset="utf-8" />
     
-    <link rel="stylesheet" href="/css/Envision.css" type="text/css" />
+    <link rel="stylesheet" href="<?= DEFAULT_URL ?>/css/Envision.css" type="text/css" />
   </head>
   
   <body>
@@ -19,10 +19,10 @@
       
       <nav>
         <ul>
-          <li><a href="/">Accueil</a></li>
+          <li><a href="<?= DEFAULT_URL ?>/">Accueil</a></li>
           <?php if ($user->isAuthenticated()) { ?>
-          <li><a href="/admin/">Admin</a></li>
-          <li><a href="/admin/news-insert.html">Ajouter une news</a></li>
+          <li><a href="<?= DEFAULT_URL ?>/admin/">Admin</a></li>
+          <li><a href="<?= DEFAULT_URL ?>/admin/news-insert.html">Ajouter une news</a></li>
           <?php } ?>
         </ul>
       </nav>
