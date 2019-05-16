@@ -84,7 +84,7 @@ class NewsController extends BackController
     {
       $this->app->user()->setFlash('Le commentaire a bien été modifié');
 
-      $this->app->httpResponse()->redirect('/admin/');
+      $this->app->httpResponse()->redirect(DEFAULT_ROUTE.'/admin/');
     }
 
     $this->page->addVar('form', $form->createView());
@@ -129,7 +129,7 @@ class NewsController extends BackController
     {
       $this->app->user()->setFlash($news->isNew() ? 'La news a bien été ajoutée !' : 'La news a bien été modifiée !');
       
-      $this->app->httpResponse()->redirect('/admin/');
+      $this->app->httpResponse()->redirect(DEFAULT_ROUTE.'/admin/');
     }
 
     $this->page->addVar('form', $form->createView());
