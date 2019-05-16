@@ -40,7 +40,7 @@ abstract class Application
       }
 
       // On ajoute la route au routeur.
-      $router->addRoute(new Route($route->getAttribute('url'), $route->getAttribute('module'), $route->getAttribute('action'), $vars));
+      $router->addRoute(new Route(DEFAULT_ROUTE.$route->getAttribute('url'), $route->getAttribute('module'), $route->getAttribute('action'), $vars));
     }
 
     try

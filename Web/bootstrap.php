@@ -1,6 +1,10 @@
 <?php
 const DEFAULT_APP = 'Frontend';
 const DEFAULT_URL = '../../../oc_php_objet/Web';
+const DEFAULT_ROUTE = '/oc_php_objet/Web';
+const DEFAULT_DB_NAME = 'oc_php_objet';
+const DEFAULT_DB_USERNAME = 'root';
+const DEFAULT_DB_PASSWD = '';
 
 // Si l'application n'est pas valide, on va charger l'application par défaut qui se chargera de générer une erreur 404
 if (!isset($_GET['app']) || !file_exists(__DIR__.'/../App/'.$_GET['app'])) $_GET['app'] = DEFAULT_APP;
