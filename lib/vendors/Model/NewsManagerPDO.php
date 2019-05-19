@@ -51,6 +51,7 @@ class NewsManagerPDO extends NewsManager
 
     // First test if file with data is present
     $path = $GLOBALS['DEFAULT_URL'].'/../tmp/cache/datas/';
+    $path = __DIR__.'/../../../tmp/cache/datas/';
     $my_file = $path . 'file.txt';
     if(is_file($my_file)){
       $handle = fopen($my_file, 'w') or die('Cannot open file:  '.$my_file);

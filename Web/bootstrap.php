@@ -1,8 +1,8 @@
 <?php
 const DEFAULT_APP = 'Frontend';
 const DEFAULT_URL = '../../../oc_php_objet_framework/Web';
-$GLOBALS['DEFAULT_URL'] = '../../../MyProjects/oc_php_objet_framework/Web';
-const DEFAULT_ROUTE = '/MyProjects/oc_php_objet_framework/Web';
+$GLOBALS['DEFAULT_URL'] = '../../../oc_php_objet_framework/Web';
+const DEFAULT_ROUTE = '/oc_php_objet_framework/Web';
 const DEFAULT_DB_NAME = 'oc_php_objet';
 const DEFAULT_DB_USERNAME = 'root';
 const DEFAULT_DB_PASSWD = '';
