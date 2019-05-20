@@ -5,6 +5,10 @@ use \Entity\News;
 
 class NewsManagerPDO extends NewsManager
 {
+    protected $path = __DIR__.'/../../../tmp/cache/datas/';
+    protected $fileName = "cache_news.txt";
+
+
   protected function add(News $news)
   {
     $requete = $this->dao->prepare('INSERT INTO news SET auteur = :auteur, titre = :titre, contenu = :contenu, dateAjout = NOW(), dateModif = NOW()');
@@ -14,6 +18,11 @@ class NewsManagerPDO extends NewsManager
     $requete->bindValue(':contenu', $news->contenu());
     
     $requete->execute();
+
+      $my_file = $this->path . $this->fileName;
+      if(is_file($my_file)){
+          unlink($my_file);
+      }
   }
 
   public function count()
@@ -23,15 +32,18 @@ class NewsManagerPDO extends NewsManager
 
   public function delete($id)
   {
-    $this->dao->exec('DELETE FROM news WHERE id = '.(int) $id);
+        $this->dao->exec('DELETE FROM news WHERE id = '.(int) $id);
+        $my_file = $this->path . $this->fileName;
+        if(is_file($my_file)){
+          unlink($my_file);
+        }
   }
 
     public function getList($debut = -1, $limite = -1)
     {
         // First test if file with data is present
         $isStillCache = false;
-        $path = __DIR__.'/../../../tmp/cache/datas/';
-        $my_file = $path . 'file.txt';
+        $my_file = $this->path . $this->fileName;
         if(is_file($my_file)){
             $contentToGet = "";
             $lines = file($my_file);
@@ -125,5 +137,10 @@ class NewsManagerPDO extends NewsManager
     $requete->bindValue(':id', $news->id(), \PDO::PARAM_INT);
     
     $requete->execute();
+
+      $my_file = $this->path . $this->fileName;
+      if(is_file($my_file)){
+          unlink($my_file);
+      }
   }
 }
