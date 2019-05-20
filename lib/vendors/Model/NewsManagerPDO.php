@@ -8,7 +8,6 @@ class NewsManagerPDO extends NewsManager
     protected $path = __DIR__.'/../../../tmp/cache/datas/';
     protected $fileName = "cache_news.txt";
 
-
   protected function add(News $news)
   {
     $requete = $this->dao->prepare('INSERT INTO news SET auteur = :auteur, titre = :titre, contenu = :contenu, dateAjout = NOW(), dateModif = NOW()');
