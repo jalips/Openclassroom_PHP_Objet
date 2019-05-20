@@ -26,4 +26,12 @@ class ConnexionController extends BackController
       }
     }
   }
+  
+  public function createCache()
+  {
+      // On retourne un tableau de la forme ['nomdelavue' => 'duree'].
+      // La durée est exprimée en secondes,
+      // et se règle depuis le fichier de configuration de l 'application.
+      return ['index' => $this->app->config()->get('connexion_caching_time')];
+  }
 }

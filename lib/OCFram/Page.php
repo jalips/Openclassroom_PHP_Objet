@@ -5,6 +5,9 @@ class Page extends ApplicationComponent
 {
   protected $contentFile;
   protected $vars = [];
+  
+  // attribut qui contient la page générée
+  protected $generatedPage = [];
 
   public function addVar($var, $value)
   {
@@ -16,7 +19,9 @@ class Page extends ApplicationComponent
     $this->vars[$var] = $value;
   }
 
-  public function getGeneratedPage()
+  // Méthode qui génère la page 
+  // et qui stocke le resultat dans un attribut
+  public function generatePage()
   {
     if (!file_exists($this->contentFile))
     {
@@ -33,7 +38,7 @@ class Page extends ApplicationComponent
 
     ob_start();
       require __DIR__.'/../../App/'.$this->app->name().'/Templates/layout.php';
-    return ob_get_clean();
+    $this->setGeneratedPage(ob_get_clean());
   }
 
   public function setContentFile($contentFile)
@@ -44,5 +49,22 @@ class Page extends ApplicationComponent
     }
 
     $this->contentFile = $contentFile;
+  }
+  
+  // Setter de $generatedPage
+  public function setGeneratedPage($content)
+  {
+      if (!is_string($content) || empty($content))
+    {
+      throw new \InvalidArgumentException('La contenu de la page est invalide');
+    }
+    $this->generatedPage = $content;
+  }
+  
+  
+  // Getter de $generatedPage
+  public function generatedPage()
+  {
+      return $this->generatedPage;
   }
 }

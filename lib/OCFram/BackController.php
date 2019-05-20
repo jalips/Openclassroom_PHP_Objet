@@ -12,7 +12,7 @@ abstract class BackController extends ApplicationComponent
   public function __construct(Application $app, $module, $action)
   {
     parent::__construct($app);
-
+    
     $this->managers = new Managers('PDO', PDOFactory::getMysqlConnexion());
     $this->page = new Page($app);
 
@@ -20,6 +20,20 @@ abstract class BackController extends ApplicationComponent
     $this->setAction($action);
     $this->setView($action);
   }
+  
+  
+  // Getter de $module
+  public function module()
+  {
+      return $this->module;
+  }
+  
+  // Getter de $view
+  public function view()
+  {
+      return $this->view;
+  }
+
 
   public function execute()
   {
@@ -69,4 +83,8 @@ abstract class BackController extends ApplicationComponent
 
     $this->page->setContentFile(__DIR__.'/../../App/'.$this->app->name().'/Modules/'.$this->module.'/Views/'.$this->view.'.php');
   }
+  
+  // Methode abstraite à implémenter dans les controleur enfants
+  abstract public function createCache();
+  
 }

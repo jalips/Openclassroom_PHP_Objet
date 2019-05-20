@@ -8,6 +8,7 @@ abstract class Application
   protected $name;
   protected $user;
   protected $config;
+  protected $cache;
 
   public function __construct()
   {
@@ -15,6 +16,9 @@ abstract class Application
     $this->httpResponse = new HTTPResponse($this);
     $this->user = new User($this);
     $this->config = new Config($this);
+    
+    // On instancie le  système de cache
+    $this->cache = new CacheEngine($this);
 
     $this->name = '';
   }
@@ -90,5 +94,11 @@ abstract class Application
   public function user()
   {
     return $this->user;
+  }
+  
+  // Getter de $cache
+  public function cache()
+  {
+      return $this->cache;
   }
 }
